@@ -24,10 +24,6 @@ import Search from "./img/search.png"
 
 var center = { lat: 4.8584, lng: 102.2945 }                           //default coordinate for marker
 
-// const useStyle = makeStyles((theme) => ({
-//   'textInput': { width: '100%', padding: '1rem' }
-// }))
-
 function App(props) {
 
   const [google] = useState(props);
