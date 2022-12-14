@@ -44,7 +44,6 @@ function App(props) {
 
   function getPlace() {
     const value = document.getElementById('location').value;
-    // console.log(value)
     Geocode.fromAddress(value).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
