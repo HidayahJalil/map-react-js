@@ -11,7 +11,8 @@ import React, { useRef, useState } from 'react'
 import "./App.css"
 import Search from "./img/search.png"
 
-var center = { lat: 4.8584, lng: 102.2945 }                           //default coordinate for marker
+//default coordinate for marker
+var center = { lat: 4.8584, lng: 102.2945 }                           
 
 function App(props) {
 
@@ -19,19 +20,21 @@ function App(props) {
 
   const [marker, setMarker] = useState()
 
-  const { isLoaded } = useJsApiLoader({                               //this part where we load the page and use API key for google API Service
+  const { isLoaded } = useJsApiLoader({                               
+    //this part where we load the page and use API key for google API Service
     googleMapsApiKey: 'AIzaSyBY8p84HeEN5VfvYgxLypAmXc6hMwhX6TE',
     libraries: ['places']
   })
 
-  Geocode.setApiKey("AIzaSyBY8p84HeEN5VfvYgxLypAmXc6hMwhX6TE");       //API key for Geocode API Service
-
-  const [map, setMap] = useState(/** @type google.maps.Map */(null))  //useState will hold data before submit to db
+  //API key for Geocode API Service
+  Geocode.setApiKey("AIzaSyBY8p84HeEN5VfvYgxLypAmXc6hMwhX6TE");       
+  //useState will hold data before submit to db
+  const [map, setMap] = useState(/** @type google.maps.Map */(null))  
   const [directionsResponse, setDirectionsResponse] = useState(null)      
   const originRef = useRef()                                          
 
-
-  function getPlace() {         //Function to get the coordinate of the place entered by user 
+  //Function to get the coordinate of the place entered by user 
+  function getPlace() {         
     const value = document.getElementById('location').value;
     console.log(value,"getValue")
     Geocode.fromAddress(value).then(
@@ -39,7 +42,8 @@ function App(props) {
         const { lat, lng } = response.results[0].geometry.location;
         console.log(lat, lng);
         center = { lat: lat, lng: lng };
-        setMarker(center)                      //and set the marker to coordinate
+        //and set the marker to coordinate
+        setMarker(center)                      
         map.setCenter({     
           lat: lat,
           lng: lng
