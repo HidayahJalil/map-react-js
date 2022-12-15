@@ -83,7 +83,7 @@ function App(props) {
 
 
       <div className='map'>
-        <GoogleMap                              {/* show google map  */}          
+        <GoogleMap                              // show google map         
           google={google}
           center={center}
           zoom={15}
