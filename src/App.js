@@ -63,7 +63,8 @@ function App(props) {
     <React.Fragment>
       <div className='wrapper'>
         <div className='col-lg-8'>
-          <Autocomplete>                  {/* Autocomplete textfield*/}
+          {/* Autocomplete textfield where user enter location */}
+          <Autocomplete>            
             <TextField
               id="location"
               variant='filled'
@@ -76,17 +77,19 @@ function App(props) {
             />
           </Autocomplete>
         </div>
+        {/* search icon that return the location entered on map */}
         <div className='col-lg-4'>
-          <img src={Search} className='schicon' onClick={() => getPlace()} />   {/*Search button*/}
+          <img src={Search} className='schicon' onClick={() => getPlace()} />   
         </div>
       </div>
 
 
       <div className='map'>
-        <GoogleMap                              // show google map         
+        {/* Show google map */}
+        <GoogleMap
           google={google}
           center={center}
-          zoom={15}
+          zoom={5}
           // className={css.maps}
           mapContainerStyle={{ width: '100%', height: '100%', overflow: 'visible', position: 'absolute' }}
           options={{
@@ -97,7 +100,8 @@ function App(props) {
           }}
           onLoad={map => setMap(map)}
         >
-          <Marker position={marker} />            {/*show marker*/}
+          {/* Show marker */}
+          <Marker position={marker} />
           {/* {console.log(marker, "getThisMarker")} */}
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
