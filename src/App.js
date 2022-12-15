@@ -77,13 +77,13 @@ function App(props) {
           </Autocomplete>
         </div>
         <div className='col-lg-4'>
-          <img src={Search} className='schicon' onClick={() => getPlace()} />
+          <img src={Search} className='schicon' onClick={() => getPlace()} />   {/*Search button*/}
         </div>
       </div>
 
 
       <div className='map'>
-        <GoogleMap
+        <GoogleMap                              {/* show google map  */}          
           google={google}
           center={center}
           zoom={15}
@@ -97,7 +97,7 @@ function App(props) {
           }}
           onLoad={map => setMap(map)}
         >
-          <Marker position={marker} />
+          <Marker position={marker} />            {/*show marker*/}
           {/* {console.log(marker, "getThisMarker")} */}
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
