@@ -19,19 +19,19 @@ function App(props) {
 
   const [marker, setMarker] = useState()
 
-  const { isLoaded } = useJsApiLoader({                               //this part where we load the map
+  const { isLoaded } = useJsApiLoader({                               //this part where we load the page and use API key for google API Service
     googleMapsApiKey: 'AIzaSyBY8p84HeEN5VfvYgxLypAmXc6hMwhX6TE',
     libraries: ['places']
   })
 
-  Geocode.setApiKey("AIzaSyBY8p84HeEN5VfvYgxLypAmXc6hMwhX6TE");
+  Geocode.setApiKey("AIzaSyBY8p84HeEN5VfvYgxLypAmXc6hMwhX6TE");       //API key for Geocode API Service
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))  //useState will hold data before submit to db
-  const [directionsResponse, setDirectionsResponse] = useState(null)
-  const originRef = useRef()
+  const [directionsResponse, setDirectionsResponse] = useState(null)      
+  const originRef = useRef()                                          
 
 
-  function getPlace() {
+  function getPlace() {         //Function to get the coordinate of the place entered by user 
     const value = document.getElementById('location').value;
     console.log(value,"getValue")
     Geocode.fromAddress(value).then(
@@ -39,8 +39,8 @@ function App(props) {
         const { lat, lng } = response.results[0].geometry.location;
         console.log(lat, lng);
         center = { lat: lat, lng: lng };
-        setMarker(center)
-        map.setCenter({
+        setMarker(center)                      //and set the marker to coordinate
+        map.setCenter({     
           lat: lat,
           lng: lng
         });
@@ -63,7 +63,7 @@ function App(props) {
     <React.Fragment>
       <div className='wrapper'>
         <div className='col-lg-8'>
-          <Autocomplete>
+          <Autocomplete>                  {/* Autocomplete textfield*/}
             <TextField
               id="location"
               variant='filled'
@@ -71,7 +71,7 @@ function App(props) {
               placeholder={''}
               type='text'
               ref={originRef}
-              // onKeyPress={getPlace}
+              onKeyPress={getPlace}
               style={{ width: '80rem' }}
             />
           </Autocomplete>
